@@ -1,0 +1,51 @@
+{
+    "title": "Authentication",
+    "description": "Personio Authentication API",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/personio.de/authentication/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.personio.de/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "post_auth": {
+            "main": "./lib/actions/post_auth.js",
+            "title": "Request Authentication Token",
+            "description": "Request Authentication Token",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_auth.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
